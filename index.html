@@ -9,10 +9,11 @@
     <!-- Include HTMX Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.9.6/htmx.min.js" integrity="sha512-tGWc4YBM6ag1pJndcieiU2r+lJXdzBRk70mHE13JoGeZI/QdWQkQ6q1CL1xYdJtTOfARf5oPcxJCnS6bLaM+KA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
+
   <body class="bg-gray-100">
     <div class="container max-w-3xl mx-auto mt-8 p-4">
       <h1 class="text-2xl font-semibold mb-4">Intake Form</h1>
-      <form id="intake-form" class="bg-white p-6 rounded-lg shadow-md" hx-post="/submit">
+      <form action="upload" method="post" id="intake-form" enctype="multipart/form-data" class="bg-white p-6 rounded-lg shadow-md">
         <!-- Name -->
         <div class="mb-4 flex space-x-4">
           <div class="w-1/2">
@@ -23,6 +24,12 @@
             <label for="last-name" class="block text-gray-599">Last Name:</label>
             <input type="text" id="last-name" name="last-name" class="mt-1 p-2 w-full rounded border border-gray-300">
           </div>
+        </div>
+
+        <!-- SSN -->
+        <div class="mb-4">
+          <label for="ssn" class="block text-gray-600">Last 4 digits of SSN:</label>
+          <input type="text" id="ssn" name="ssn" class="mt-1 p-2 w-full rounded border border-gray-300">
         </div>
 
         <!-- Email -->
@@ -67,6 +74,7 @@
         <div id="response-message" class="mt-4 text-green-600"></div>
       </form>
     </div>
+
     <script>
       // Displays files that were picked by clicking on the drop zone
       function displayFromBrowse() {
@@ -95,6 +103,16 @@
       dropZone.addEventListener("dragleave", function () {
               dropZone.classList.remove("border-blue-500");
             });
+
+      <!-- dropZone.addEventListener('mouseenter', function () { -->
+                <!--         const svg = document.querySelector('#drop-zone svg'); -->
+                <!--         svg.classList.add('animate-bounce'); -->
+                <!--       }); -->
+
+        <!-- dropZone.addEventListener('mouseleave', function () { -->
+                  <!--         const svg = document.querySelector('#drop-zone svg'); -->
+                  <!--         svg.classList.remove('animate-bounce'); -->
+                  <!--       }); -->
 
       // Takes in a list of files and displays to the screen
       function displayFileList(files) {
