@@ -39,6 +39,7 @@ func uploadFiles(w http.ResponseWriter, r *http.Request) {
 		log.Println(err)
 	}
 	fmt.Println(string(contactInfoBytes))
+	fmt.Fprintf(w, "Successfully Uploaded Contact Info: %s\n", string(contactInfoBytes))
 
 	// Parse our multipart form, 10 << 20 specifies a maximum
 	// upload of 10 MB files.
